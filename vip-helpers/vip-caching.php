@@ -352,3 +352,12 @@ function wpcom_vip_count_user_posts( $user_id ) {
 
     return $count;
 }
+/**
+* Enables object caching for the response sent by Instagram when querying for Instagram image HTML.
+*
+* This cannot be included inside Jetpack because it ships with caching disabled by default.
+* By enabling caching it's possible to save time in un-batchached page renders.
+*
+* @see https://github.com/Automattic/io/issues/476
+**/
+add_filter( 'instagram_cache_oembed_api_response_body', '__return_true' );
